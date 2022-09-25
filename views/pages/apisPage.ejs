@@ -7,5 +7,13 @@
             List of apis
         </hugeText>
         </br>
+        <% fs.readdir("./apis/", (err, files) => { %>
+           <% if (!err) { %>
+            <% files.forEach(file => { %>
+                <linkText><a href="/apis/about/<%=require(file).name%>"></a><%=require(file).name%></linkText>
+                </br>
+            <% }) %>
+           <% } %>
+        %< }) %>
     </center>
 </body>
