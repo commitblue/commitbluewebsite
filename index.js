@@ -51,6 +51,9 @@ app.get("/apis/:api", (req, res) => {
 app.get("/apis/", (req, res) => {
   res.render("pages/apisPage")
 })
+app.use((req, res) => res.status(404).render("pages/404", {
+  reason: "Unknown error, unknown page"
+}))
 app.listen(8080, () => {
   console.log("ready")
 })
