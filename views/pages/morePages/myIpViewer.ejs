@@ -1,0 +1,22 @@
+<%- include(views + "/partials/inallpages") %>
+<%- include(views + "/partials/texttags") %>
+<%- include(views + "/partials/footer") %>
+<body>
+    <center>
+        <hugeText>
+            Your ip is...
+        </hugeText>
+        </br>
+        <largeHugeText>
+            <%= req.headers["x-forwarded-for"] %>
+        </largeHugeText>
+        </br>
+        <infoText>
+            we do not store this information
+        </infoText>
+        </br>
+        <linkText><a href="/apis/myip">Try out the api version</a></linkText>
+        </br>
+        <img src="/images/cat.png"/>
+    </center>
+</body>
