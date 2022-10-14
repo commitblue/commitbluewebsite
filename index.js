@@ -88,10 +88,12 @@ app.get("/apis/", (req, res) => {
     required.filename = v
     details[i] = required
   }
-  console.log(details)
-  res.render("pages/apisPage", {
-    apis : details
-  })
+  setTimeout(() => {
+    console.log(details)
+    res.render("pages/apisPage", {
+      apis : details
+    })
+  }, 2000)
 })
 app.use((req, res) => res.status(404).render("pages/404", {
   reason: "Unknown error, unknown page"
