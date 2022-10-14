@@ -84,7 +84,7 @@ app.get("/apis/", (req, res) => {
       console.log(v)
       const required = require("./views/pages/apis/" + v)
       required.filename = v
-      details[details.length + 1] = required
+      details.push(required)
     }
     done = true
   })
