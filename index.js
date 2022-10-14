@@ -77,23 +77,17 @@ app.get("/apis/detail/:name", (req, res) => {
 })
 app.get("/apis/", (req, res) => {
   let details = []
-  let done = false
   fs.readdir("./views/pages/apis/", (err, files) => {
-    for (let v in files){
-      v = files[v]
-      console.log(v)
-      const required = require("./views/pages/apis/" + v)
-      required.filename = v
-      details.push(required)
-    }
-    done = true
+    files = details
   })
-  function waiting(){
-    if (!done){
-      setTimeout(waiting, 1000)
-    }
+  for (let v in details){
+    let i = v
+    v = details[v]
+    console.log(v)
+    const required = require("./views/pages/apis/" + v)
+    required.filename = v
+    details[i] = required
   }
-  waiting()
   console.log(details)
   res.render("pages/apisPage", {
     apis : details
