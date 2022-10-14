@@ -88,15 +88,12 @@ app.get("/apis/", (req, res) => {
     }
     done = true
   })
-  async function waitForDone(){ // thanks js
-    while (true){
-      if (done){
-        return
-      }
-      await null
+  function waiting(){
+    if (!done){
+      setTimeout(waiting, 1000)
     }
   }
-  waitForDone()
+  waiting()
   res.render("pages/apisPage", {
     apis : details
   })
