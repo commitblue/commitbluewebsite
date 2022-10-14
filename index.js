@@ -86,6 +86,7 @@ app.get("/apis/", (req, res) => {
     console.log(v)
     const required = require("./views/pages/apis/" + v)
     required.filename = v
+    console.log(required.filename)
     details[i] = required
   }
   setTimeout(() => {
