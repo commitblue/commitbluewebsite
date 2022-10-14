@@ -75,8 +75,16 @@ app.get("/apis/detail/:name", (req, res) => {
     } else res.render("pages/404")
   }
 })
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
 app.get("/apis/", (req, res) => {
   let details = []
+  let done = false
   fs.readdir("./views/pages/apis/", (err, files) => {
     for (let v in files){
       v = files[v]
@@ -85,8 +93,12 @@ app.get("/apis/", (req, res) => {
       required.filename = v
       details[details.length + 1] = required
     }
+    done = true
   })
-  console.log(details)
+  // because readdir sucks
+  while (!done){
+    sleep(1000)
+  }
   res.render("pages/apisPage", {
     apis : details
   })
