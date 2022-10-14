@@ -75,13 +75,6 @@ app.get("/apis/detail/:name", (req, res) => {
     } else res.render("pages/404")
   }
 })
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
 app.get("/apis/", (req, res) => {
   let details = []
   let done = false
@@ -95,10 +88,15 @@ app.get("/apis/", (req, res) => {
     }
     done = true
   })
-  // because readdir sucks
-  while (!done){
-    sleep(1000)
+  async function waitForDone(){ // thanks js
+    while (true){
+      if (done){
+        return
+      }
+      await null
+    }
   }
+  waitForDone()
   res.render("pages/apisPage", {
     apis : details
   })
