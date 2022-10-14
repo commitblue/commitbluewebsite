@@ -30,7 +30,15 @@ app.get("/pages/:page/", (req, res) => {
   }
 })
 app.get("/pages/", (req, res) => {
-  res.render("pages/pagesPage")
+  fs.readdir("./views/pages/morePages", (err, files) => {
+    if (!err){
+      res.render("pages/pagesPage", {
+        pages : files
+      })
+    } else {
+      console.log(err)
+    }
+  })
 })
 app.get("/apis/:api", (req, res) => {
   let condition = false
@@ -48,8 +56,40 @@ app.get("/apis/:api", (req, res) => {
     res.render("pages/404")
   }
 })
+app.get("/apis/detail/:name", (req, res) => {
+  if (req.params.name){
+    let condition = false
+    let erro = null
+    try {
+      fs.readFileSync("./views/pages/apis/" + req.params.name + ".js")
+      condition = true
+    } catch(err) {
+      erro = err
+    }
+    if (condition){
+      const required = require("./views/pages/apis/" + req.params.name + ".js")
+      required.filename = req.params.name + ".js"
+      res.render("pages/apiDetails", {
+        api : required
+      })
+    } else res.render("pages/404")
+  }
+})
 app.get("/apis/", (req, res) => {
-  res.render("pages/apisPage")
+  let details = []
+  fs.readdir("./views/pages/apis/", (err, files) => {
+    for (let v in files){
+      v = files[v]
+      console.log(v)
+      const required = require("./views/pages/apis/" + v)
+      required.filename = v
+      details[details.length + 1] = required
+    }
+  })
+  console.log(details)
+  res.render("pages/apisPage", {
+    apis : details
+  })
 })
 app.use((req, res) => res.status(404).render("pages/404", {
   reason: "Unknown error, unknown page"

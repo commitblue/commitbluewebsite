@@ -4,9 +4,13 @@
 <body>
     <center>
         <hugeText>
-            Under construction
+            Links
         </hugeText>
-        </br>
-        <img src="/images/underConstruction.png"/>
+        <% for (let i in pages) { %>
+            </br>
+            <% i = pages[i] %>
+            <% const constructedString = "/pages/" + i.split(".ejs")[0] %>
+            <linkText><a href=<%=constructedString%>><%=i.split(".ejs")[0]%></a></linkText>
+        <% } %>
     </center>
 </body>

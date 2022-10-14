@@ -1,20 +1,17 @@
 <%- include("../partials/inallpages") %>
 <%- include("../partials/texttags") %>
 <%- include("../partials/footer") %>
-<% const fs = require("fs") %>
 <body>
     <center>
         <hugeText>
             List of apis
         </hugeText>
         </br>
-        <% fs.readdir("./apis/", (err, files) => { %>
-           <% if (!err) { %>
-            <% files.forEach(file => { %>
-                <linkText><a href="/apis/about/<%=require(file).name%>"></a><%=require(file).name%></linkText>
-                </br>
-            <% }) %>
-           <% } %>
-        <% }) %>
+        <% for (let v in apis){ %>
+            </br>
+            <% v = apis[v] %>
+            <% const constructedString = "/apis/detail/" + v.filename.split(".js")[0] %>
+            <linkText><a href=<%= constructedString %>>v.name</a></linkText>
+        <% } %>
     </center>
 </body>

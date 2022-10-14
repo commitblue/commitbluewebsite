@@ -1,0 +1,17 @@
+<%- include("../partials/inallpages") %>
+<%- include("../partials/texttags") %>
+<%- include("../partials/footer") %>
+<body>
+    <center>
+        <hugeText>
+            <%= api.name %>
+        </hugeText>
+        </br>
+        <infoText>
+            <%= api.description %>
+        </infoText>
+        </br>
+        <% const constructed = "/apis/" + api.filename.split(".js")[0] %>
+        <linkText><a href=<%= constructed %>>Click to try api</a></linkText>
+    </center>
+</body>
