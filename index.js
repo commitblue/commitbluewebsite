@@ -94,6 +94,7 @@ app.get("/apis/", (req, res) => {
     }
   }
   waiting()
+  console.log(details)
   res.render("pages/apisPage", {
     apis : details
   })
