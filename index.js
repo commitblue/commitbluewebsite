@@ -78,7 +78,7 @@ app.get("/apis/detail/:name", (req, res) => {
 app.get("/apis/", (req, res) => {
   let details = []
   fs.readdir("./views/pages/apis/", (err, files) => {
-    files = details
+    details = files
   })
   for (let v in details){
     let i = v
