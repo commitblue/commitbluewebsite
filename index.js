@@ -96,5 +96,5 @@ app.use((req, res) => res.status(404).render("pages/404", {
   reason: "Unknown error, unknown page"
 }))
 app.listen(8080, () => {
-  console.log("ready")
+  console.log("ready z")
 })
