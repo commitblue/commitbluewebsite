@@ -78,24 +78,20 @@ app.get("/apis/detail/:name", (req, res) => {
 app.get("/apis/", (req, res) => {
   let details = []
   fs.readdir("./views/pages/apis/", (err, files) => {
-    details = files
+    for (let v in files){
+      v = files[v]
+      let req = require("./views/pages/apis/" + v)
+      req.filename = v
+      details.push(req)
+    }
   })
-  for (let v in details){
-    let i = v
-    v = details[v]
-    console.log(v)
-    const required = require("./views/pages/apis/" + v)
-    required.filename = v
-    console.log(required.filename)
-    details[i] = required
-  }
   setTimeout(() => {
-    console.log(details)
     res.render("pages/apisPage", {
       apis : details
     })
-  }, 2000)
+  }, 0)
 })
+app.get("/morestuff/", (req, res) => res.render("pages/morestuff"))
 app.use((req, res) => res.status(404).render("pages/404", {
   reason: "Unknown error, unknown page"
 }))
