@@ -14,12 +14,12 @@
         <script>
             var c = 0
             function spamATON(){
+                c += 1
                 document.getElementsByName("button").forEach(element => {
-                    element.textContent = "spamtered"
+                    element.textContent = `${c} spamtered`
                 })
                 const img = document.createElement("img")
                 img.src = "/images/spamton.png"
-                c += 1
                 for (let i = 0; i < c; i++) {
                     document.getElementById("spamtom").appendChild(img)
                 }
