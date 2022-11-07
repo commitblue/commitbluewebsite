@@ -22,6 +22,14 @@
                 img.src = "/images/spamton.png"
                 document.getElementById("spamtom").appendChild(img)
             }
+            var canim = 0
+            function spamAnim(){
+                canim += 1
+                document.getElementsByName("buttonSpam").textContent = `${canim} spamming`
+                const img = document.createElement("img")
+                img.src = "/gifs/spamanim.gif"
+                document.getElementById("spamAnim").appendChild(img)
+            }
         </script>
         </br>
         </br>
@@ -33,8 +41,9 @@
         <div id="spamtom"></div>
         </br>
         </br>
-        <button name="button" class="btn btn-primary" onclick="spamAnim()">
+        <button name="buttonSpam" class="btn btn-primary" onclick="spamAnim()">
             click spam
         </button>
+        <div id="spamAnim"></div>
     </center>
 </body>
