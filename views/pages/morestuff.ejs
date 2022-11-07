@@ -25,7 +25,7 @@
             var canim = 0
             function spamAnim(){
                 canim += 1
-                document.getElementsByName("buttonSpam").textContent = `${canim} spamming`
+                document.getElementsByName("buttonSpam").forEach(element => element.textContent = `${canim} spamming`)
                 const img = document.createElement("img")
                 img.src = "/gifs/spamanim.gif"
                 document.getElementById("spamAnim").appendChild(img)
