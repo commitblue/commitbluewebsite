@@ -13,10 +13,12 @@
         </audio>
         <script>
             function spamATON(){
-                document.getElementById("z").textContent = "u gort spamtered"
+                document.getElementsByName("button").forEach(element => {
+                    element.textContent = "spamtered"
+                })
             }
         </script>
-        <button class="button" onclick="spamATON()">
+        <button name="button" onclick="spamATON()">
             click
         </button>
     </center>
