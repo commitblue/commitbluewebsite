@@ -12,13 +12,17 @@
             Unsupported browser
         </audio>
         <script>
+            var c = 0
             function spamATON(){
                 document.getElementsByName("button").forEach(element => {
                     element.textContent = "spamtered"
                 })
                 const img = document.createElement("img")
                 img.src = "/images/spamton.png"
-                document.getElementById("spamtom").appendChild(img)
+                c += 1
+                for (let i = 0; i < c; i++) {
+                    document.getElementById("spamtom").appendChild(img)
+                }
             }
         </script>
         </br>
