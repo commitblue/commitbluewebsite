@@ -1,6 +1,12 @@
 <%- include(views + "/partials/texttags") %>
 <%- include(views + "/partials/header") %>
 <%- include(views + "/partials/inallpages") %>
+<script>
+    function exec(){
+        Function(document.getElementById("scriptCode").textContent)()
+        
+    }
+</script>
 <body>
     <center>
         <textarea rows="16" cols="80" id="scriptCode" maxlength="3000"></textarea>
