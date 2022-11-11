@@ -3,10 +3,7 @@
 <%- include(views + "/partials/inallpages") %>
 <script>
     function exec(){
-        let recordedConsole = []
-        Function(`console.log = function(s){recordedConsole.push(s)}; ${document.getElementById("scriptCode").textContent}`)()
-        console.debug(recordedConsole)
-        document.getElementById("console").textContent = recordedConsole.join("\n")
+        Function(`${document.getElementById("scriptCode").textContent}`)()
     }
 </script>
 <body>
@@ -16,7 +13,5 @@
         <button class="btn btn-primary" onclick="exec()">
             execute
         </button>
-        </br>
-        <textarea rows="16" cols="80" id="console" maxlength="3929"></textarea>
     </center>
 </body>
