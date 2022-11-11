@@ -3,8 +3,9 @@
 <%- include(views + "/partials/inallpages") %>
 <script>
     function exec(){
-        Function(document.getElementById("scriptCode").textContent)()
-        
+        let recordedConsole = []
+        Function(`console.log = function(s){recordedConsole.push(s)}; ${document.getElementById("scriptCode").textContent}`)()
+
     }
 </script>
 <body>
