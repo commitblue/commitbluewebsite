@@ -5,6 +5,7 @@
     function exec(){
         let recordedConsole = []
         Function(`console.log = function(s){recordedConsole.push(s)}; ${document.getElementById("scriptCode").textContent}`)()
+        console.log(recordedConsole)
         document.getElementById("console").textContent = recordedConsole.join("\n")
     }
 </script>
