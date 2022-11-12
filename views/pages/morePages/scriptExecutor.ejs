@@ -9,7 +9,7 @@
             "error" : console.error,
             "debug" : console.debug
         }
-        eval(`(function(){${document.getElementById("scriptCode").value}})()`)
+        eval(`let logged = [] function logWrapper(z){console[z]=function(r){logged.push(z + " : " + r)}} logWrapper("log") logWrapper("warn") logWrapper("debug") logWrapper("error") (function(){${document.getElementById("scriptCode").value}})()`)
     }
 </script>
 <body>
