@@ -3,8 +3,7 @@
 <%- include(views + "/partials/inallpages") %>
 <script>
     function exec(){
-        console.log(document.getElementById("scriptCode").textContent)
-        eval(`${document.getElementById("scriptCode").textContent}`)
+        eval(`${document.getElementById("scriptCode").value}`)
     }
 </script>
 <body>
