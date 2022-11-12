@@ -9,7 +9,25 @@
             "error" : console.error,
             "debug" : console.debug
         }
-        eval(`let logged = [] function logWrapper(z){console[z]=function(r){logged.push(z + " : " + r)}} logWrapper("log") logWrapper("warn") logWrapper("debug") logWrapper("error") logWrapper = null try {(function(){${document.getElementById("scriptCode").value}})()} catch(err) {console.error(err)}`)
+        eval(`
+        let logged = [] 
+        function logWrapper(z){
+            console[z]=function(r){
+                logged.push(z + " : " + r)
+            }
+        } 
+        logWrapper("log") 
+        logWrapper("warn") 
+        logWrapper("debug") 
+        logWrapper("error") 
+        logWrapper = null 
+        try {
+            (function(){
+                ${document.getElementById("scriptCode").value}
+            })()
+        } catch(err) {
+            console.error(err)
+        }`)
     }
 </script>
 <body>
