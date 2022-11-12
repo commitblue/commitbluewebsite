@@ -9,7 +9,7 @@
             "error" : console.error,
             "debug" : console.debug
         }
-        eval(`${document.getElementById("scriptCode").value}`)
+        eval(`(function(){${document.getElementById("scriptCode").value}})()`)
     }
 </script>
 <body>
