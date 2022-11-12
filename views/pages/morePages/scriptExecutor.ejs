@@ -22,9 +22,7 @@
         logWrapper("error") 
         logWrapper = null 
         try {
-            (function(){
-                ${document.getElementById("scriptCode").value}
-            })()
+            ${document.getElementById("scriptCode").value}
         } catch(err) {
             console.error(err)
         }
