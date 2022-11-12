@@ -9,7 +9,7 @@
             "error" : console.error,
             "debug" : console.debug
         }
-        eval(`
+        const logged = eval(`
         let logged = [] 
         function logWrapper(z){
             console[z]=function(r){
@@ -29,6 +29,7 @@
             console.error(err)
         }
         return logged`)
+        document.getElementById("output").value = logged.join("\n")
     }
 </script>
 <body>
