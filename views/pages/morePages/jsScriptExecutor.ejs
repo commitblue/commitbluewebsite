@@ -21,7 +21,11 @@
         wrapper("debug")
         wrapper("warn")
         wrapper("error")
-        eval(document.getElementById("scriptCode").value)
+        try {
+            eval(document.getElementById("scriptCode").value)
+        } catch(err) {
+            document.getElementById("output").value = document.getElementById("output").value + "script error" + " : " + err + "\n"
+        }
         deWrapper("log")
         deWrapper("debug")
         deWrapper("warn")
