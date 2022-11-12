@@ -9,24 +9,13 @@
             "error" : console.error,
             "debug" : console.debug
         }
-        const logged = eval(`
-        let logged = [] 
-        function logWrapper(z){
-            console[z]=function(r){
-                logged.push(z + " : " + r)
+        function wrapper(z){
+            console[z] = (r) => {
+                document.getElementById("output").value = document.getElementById("output").value + "\n" + r
             }
-        } 
-        logWrapper("log") 
-        logWrapper("warn") 
-        logWrapper("debug") 
-        logWrapper("error") 
-        logWrapper = null 
-        try {
-            ${document.getElementById("scriptCode").value}
-        } catch(err) {
-            console.error(err)
         }
-        return logged`)
+        eval(document.getElementById("scriptCode").value)
+
         document.getElementById("output").value = logged.join("\n")
     }
 </script>
