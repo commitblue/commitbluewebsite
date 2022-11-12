@@ -3,6 +3,12 @@
 <%- include(views + "/partials/inallpages") %>
 <script>
     function exec(){
+        const oldLogs = {
+            "log" : console.log,
+            "warn" : console.warn,
+            "error" : console.error,
+            "debug" : console.debug
+        }
         eval(`${document.getElementById("scriptCode").value}`)
     }
 </script>
